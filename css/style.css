@@ -1,0 +1,61 @@
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #333;
+    font-size: 42px;
+    margin-top: 20px;
+}
+
+/* Botões */
+#botoes button{
+    border: none;
+    padding: 10px 15px; /* Adiciona espaçamento interno para melhor usabilidade */
+    margin: 10px; /* Adiciona espaçamento externo */
+    border-radius: 5px; /* Borda arredondada */
+    cursor: pointer; /* Muda o cursor ao passar por cima */
+    transition: background-color 0.3s ease; /* Adiciona um efeito de transição */
+}
+
+#botoes button:hover {
+    background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+}
+
+/* jogo */
+#container {
+    display: flex;
+    width: 90%;
+    max-width: 320px; /* Define um limite máximo */
+    margin: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box {
+    width: 30%; /* Usa percentual para adaptação */
+    aspect-ratio: 1/1; /* Mantém quadrado sem precisar definir altura */
+    box-sizing: border-box;
+    flex: 1 1 33%;
+    border: 5px solid #333;
+}
+
+#block1, #block2, #block3{
+    border-top: none;
+}
+
+#block1, #block4, #block7{
+    border-left: none;
+}
+
+#block7, #block8, #block9{
+    border-bottom: none;
+}
+
+#block3, #block6, #block9{
+    border-right: none;
+}
