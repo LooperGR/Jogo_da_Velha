@@ -204,10 +204,10 @@ function winner(el) {
     let scoreBoardO = document.querySelector('#scoreboard-o');
     let msg = '';
 
-    if(winner == 'x') {
+    if(el == 'x') {
         scoreBoardX.textContent = parseInt(scoreBoardX.textContent) + 1; //atualiza o placar
         msg = 'X venceu!';
-    } else if (winner == 'o') {
+    } else if (el == 'o') {
         scoreBoardO.textContent = parseInt(scoreBoardO.textContent) + 1; //atualiza o placar
         msg = 'O venceu!';
     } else {
@@ -216,21 +216,23 @@ function winner(el) {
 
     //Exibe a mensagem
     messageText.innerHTML = msg;
-    message.classList.remove('hide');
+    message.classList.add('show');
 
     //Esconde a mensagem
     setTimeout(function() {
-        message.classList.add('hide');
+        message.classList.remove('show');
+        resetGame();
     }, 2500);
+}
 
-    //Zera o jogo
+// Função para resetar o jogo
+function resetGame() {
+    let boxes = document.querySelectorAll('.box div');
+
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].parentNode.removeChild(boxes[i]);
+    }
+
     player1 = 0;
     player2 = 0;
-
-    //Remove os elementos do tabuleiro
-    let remove = document.querySelectorAll('.box div');
-
-    for(let i = 0; i < remove.length; i++) {
-        remove[i].parentNode.removeChild(remove[i]);
-    }
 }
