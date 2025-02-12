@@ -2,7 +2,7 @@
 let x = document.querySelector('.x');
 let o = document.querySelector('.o');
 let boxes = document.querySelectorAll('.box');
-let buttons = document.querySelectorAll('#buttons-container button');
+let buttons = document.querySelectorAll('#botoes button');
 
 //Mensagens
 let message = document.querySelector('#message');
@@ -31,6 +31,11 @@ for (let i = 0; i < boxes.length; i++) {
             //Computa a jogada
             if(player1 == player2) {
                 player1++;
+
+                if(secondPlayer == 'ai-player') {
+                    computerPlayer(); //Função executada pelo computador
+                    player2++;
+                }
             } else {
                 player2++;
             }
@@ -51,6 +56,25 @@ for (let i = 0; i < boxes.length; i++) {
 
     });
 }
+
+//Modo de jogo
+for(let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function() {
+        secondPlayer = this.getAttribute('id'); //Pega o id do botão clicado
+
+        for(let j = 0; j < buttons.length; j++) {
+            buttons[j].style.display = 'none'; //Esconde os botões
+            console.log("Clicou no botão" + secondPlayer); //debug
+        }
+
+        setTimeout(function() {
+            let container = document.querySelector('#container');
+            container.classList.remove('hide');
+        }, 500);
+
+    });
+}
+    
 
 //Função para definir quem é o jogador
 function checkEl(player1, player2){
@@ -235,4 +259,32 @@ function resetGame() {
 
     player1 = 0;
     player2 = 0;
+}
+
+//Função para o computador jogar
+function computerPlayer() {
+    let cloneO = o.cloneNode(true);
+    counter = 0;
+    filled = 0;
+
+    for(let i = 0; i < boxes.length; i++) {
+        let randomNumber = Math.floor(Math.random() * 5);
+
+        //Verifica se a caixa está vazia
+        if(boxes[i].childNodes[0] == undefined) {
+            if(randomNumber <= 1) {
+                boxes[i].appendChild(cloneO);
+                counter++;
+                break;
+            } 
+
+        //Verifica quantas caixas estão preenchidas
+        } else {
+            filled++;
+        }
+    }
+
+    if(counter == 0 && filled < 9) {
+        computerPlayer();
+    }
 }

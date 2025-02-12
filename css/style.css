@@ -18,9 +18,9 @@ h2 {
 /* Botões */
 #botoes button{
     border: none;
-    padding: 10px 15px; /* Adiciona espaçamento interno para melhor usabilidade */
-    margin: 10px; /* Adiciona espaçamento externo */
-    border-radius: 5px; /* Borda arredondada */
+    padding: 10px 15px;
+    margin: 10px; 
+    border-radius: 5px; 
     cursor: pointer; /* Muda o cursor ao passar por cima */
     transition: background-color 0.3s ease; /* Adiciona um efeito de transição */
 }
@@ -85,7 +85,7 @@ h2 {
 
 /* Classe de esconder */
 .hide {
-    display: none;
+    display: none !important;
 } 
 
 /* Placar */
